@@ -1,0 +1,11 @@
+Metadata-Version: 2.1
+Name: cnnClassifier
+Version: 0.0.0
+Summary: A small python package for CNN app
+Home-page: https://github.com/SuccessPear/Kidney-Disease-Classification-DL-MLFLOW
+Author: SuccessPear
+Author-email: lethanhcong3920@gmail.com
+Description-Content-Type: text/markdown
+
+# Kidney-Disease-Classification-DL-MLFLOW
+End to end project Kidney Disease classification
