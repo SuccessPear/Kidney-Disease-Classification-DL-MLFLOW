@@ -28,10 +28,13 @@ class PrepareBaseModel:
                 model.trainable = False
 
         flatten_in = tf.keras.layers.Flatten()(model.output)
+        out1 = tf.keras.layers.Dense(
+            units=128,
+            activation='relu')(flatten_in)
         prediction = tf.keras.layers.Dense(
             units=classes,
             activation="softmax"
-        )(flatten_in)
+        )(out1)
 
         full_model = tf.keras.models.Model(
             inputs=model.input,
