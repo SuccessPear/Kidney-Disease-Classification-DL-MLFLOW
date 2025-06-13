@@ -316,3 +316,132 @@ x===============x]
 [2025-06-06 13:59:12,644: INFO: main: >>>>>>>> stage Model evaluation stage completed <<<<<<<<
 
 x===============x]
+[2025-06-13 09:42:42,989: INFO: stage_01_data_ingestion: >>>>>>>> stage Data ingestion stage start <<<<<<<<]
+[2025-06-13 09:42:42,992: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-06-13 09:42:42,995: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-06-13 09:42:42,996: INFO: common: created directory at: artifacts]
+[2025-06-13 09:42:42,997: INFO: common: created directory at: artifacts/data_ingestion]
+[2025-06-13 09:42:42,997: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2025-06-13 09:45:32,925: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2025-06-13 09:45:33,726: INFO: stage_01_data_ingestion: >>>>>>>> stage Data ingestion stage completed <<<<<<<<
+
+x===============]
+[2025-06-13 09:45:41,705: INFO: stage_02_prepare_base_model: >>>>>>>> stage Prepare Base Model stage start <<<<<<<<]
+[2025-06-13 09:45:41,710: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-06-13 09:45:41,712: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-06-13 09:45:41,713: INFO: common: created directory at: artifacts]
+[2025-06-13 09:45:41,713: INFO: common: created directory at: artifacts/prepare_base_model]
+[2025-06-13 09:45:42,761: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2025-06-13 09:45:43,266: INFO: stage_02_prepare_base_model: >>>>>>>> stage Prepare Base Model stage completed <<<<<<<<
+
+x===============]
+[2025-06-13 09:45:49,518: INFO: stage_03_model_training: >>>>>>>> stage Model training stage start <<<<<<<<]
+[2025-06-13 09:45:49,522: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-06-13 09:45:49,524: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-06-13 09:45:49,524: INFO: common: created directory at: artifacts]
+[2025-06-13 09:45:49,524: INFO: common: created directory at: artifacts/training]
+[2025-06-13 09:51:10,739: INFO: stage_03_model_training: >>>>>>>> stage Model training stage completed <<<<<<<<
+
+x===============]
+[2025-06-13 09:51:18,151: INFO: stage_04_model_evaluation: *******************]
+[2025-06-13 09:51:18,152: INFO: stage_04_model_evaluation: >>>>>> stage Evaluation stage started <<<<<<]
+[2025-06-13 09:51:18,154: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-06-13 09:51:18,156: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-06-13 09:51:18,156: INFO: common: created directory at: artifacts]
+[2025-06-13 09:51:54,037: INFO: common: json file saved at: scores.json]
+[2025-06-13 09:51:54,038: INFO: common: json file saved at: scores.json]
+[2025-06-13 09:51:57,876: WARNING: save: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 14). These functions will not be directly callable after loading.]
+[2025-06-13 09:51:59,315: INFO: builder_impl: Assets written to: /tmp/tmp2ertncih/model/data/model/assets]
+[2025-06-13 09:52:06,473: INFO: dir_util: creating /home/successpear/Documents/Learning/Project/Kidney-Disease-Classification-DL-MLFLOW/mlruns/0/9a2c92e2960243e6ac50fbaeac9390ab/artifacts/model/data]
+[2025-06-13 09:52:06,474: INFO: dir_util: creating /home/successpear/Documents/Learning/Project/Kidney-Disease-Classification-DL-MLFLOW/mlruns/0/9a2c92e2960243e6ac50fbaeac9390ab/artifacts/model/data/model]
+[2025-06-13 09:52:06,502: ERROR: stage_04_model_evaluation: No module named 'distutils._modified']
+Traceback (most recent call last):
+  File "src/cnnClassifier/pipeline/stage_04_model_evaluation.py", line 30, in <module>
+    obj.main()
+  File "src/cnnClassifier/pipeline/stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "/home/successpear/Documents/Learning/Project/Kidney-Disease-Classification-DL-MLFLOW/src/cnnClassifier/components/model_evaluation.py", line 74, in log_into_mlflow
+    mlflow.keras.log_model(self.model, "model")
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tensorflow/__init__.py", line 222, in log_model
+    return Model.log(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/models/model.py", line 552, in log
+    mlflow.tracking.fluent.log_artifacts(local_path, mlflow_model.artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tracking/fluent.py", line 817, in log_artifacts
+    MlflowClient().log_artifacts(run_id, local_dir, artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tracking/client.py", line 1069, in log_artifacts
+    self._tracking_client.log_artifacts(run_id, local_dir, artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tracking/_tracking_service/client.py", line 448, in log_artifacts
+    self._get_artifact_repo(run_id).log_artifacts(local_dir, artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/store/artifact/local_artifact_repo.py", line 58, in log_artifacts
+    dir_util.copy_tree(src=local_dir, dst=artifact_dir, preserve_mode=0, preserve_times=0)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 155, in copy_tree
+    return list(itertools.chain.from_iterable(map(copy_one, names)))
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 186, in _copy_one
+    yield from copy_tree(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 155, in copy_tree
+    return list(itertools.chain.from_iterable(map(copy_one, names)))
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 186, in _copy_one
+    yield from copy_tree(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 155, in copy_tree
+    return list(itertools.chain.from_iterable(map(copy_one, names)))
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 197, in _copy_one
+    file_util.copy_file(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/file_util.py", line 104, in copy_file
+    from distutils._modified import newer
+ModuleNotFoundError: No module named 'distutils._modified'
+[2025-06-13 09:54:51,828: INFO: stage_04_model_evaluation: *******************]
+[2025-06-13 09:54:51,828: INFO: stage_04_model_evaluation: >>>>>> stage Evaluation stage started <<<<<<]
+[2025-06-13 09:54:51,831: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-06-13 09:54:51,833: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-06-13 09:54:51,834: INFO: common: created directory at: artifacts]
+[2025-06-13 09:55:24,406: INFO: common: json file saved at: scores.json]
+[2025-06-13 09:55:24,407: INFO: common: json file saved at: scores.json]
+[2025-06-13 09:55:27,857: WARNING: save: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 14). These functions will not be directly callable after loading.]
+[2025-06-13 09:55:28,936: INFO: builder_impl: Assets written to: /tmp/tmplqzqei_5/model/data/model/assets]
+[2025-06-13 09:55:37,046: INFO: dir_util: creating /home/successpear/Documents/Learning/Project/Kidney-Disease-Classification-DL-MLFLOW/mlruns/0/5e6d8fcaea6240cfa0b1750bdfdbcfde/artifacts/model/data]
+[2025-06-13 09:55:37,047: INFO: dir_util: creating /home/successpear/Documents/Learning/Project/Kidney-Disease-Classification-DL-MLFLOW/mlruns/0/5e6d8fcaea6240cfa0b1750bdfdbcfde/artifacts/model/data/model]
+[2025-06-13 09:55:37,073: ERROR: stage_04_model_evaluation: No module named 'distutils._modified']
+Traceback (most recent call last):
+  File "src/cnnClassifier/pipeline/stage_04_model_evaluation.py", line 30, in <module>
+    obj.main()
+  File "src/cnnClassifier/pipeline/stage_04_model_evaluation.py", line 20, in main
+    evaluation.log_into_mlflow()
+  File "/home/successpear/Documents/Learning/Project/Kidney-Disease-Classification-DL-MLFLOW/src/cnnClassifier/components/model_evaluation.py", line 74, in log_into_mlflow
+    mlflow.keras.log_model(self.model, "model")
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tensorflow/__init__.py", line 222, in log_model
+    return Model.log(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/models/model.py", line 552, in log
+    mlflow.tracking.fluent.log_artifacts(local_path, mlflow_model.artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tracking/fluent.py", line 817, in log_artifacts
+    MlflowClient().log_artifacts(run_id, local_dir, artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tracking/client.py", line 1069, in log_artifacts
+    self._tracking_client.log_artifacts(run_id, local_dir, artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/tracking/_tracking_service/client.py", line 448, in log_artifacts
+    self._get_artifact_repo(run_id).log_artifacts(local_dir, artifact_path)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/mlflow/store/artifact/local_artifact_repo.py", line 58, in log_artifacts
+    dir_util.copy_tree(src=local_dir, dst=artifact_dir, preserve_mode=0, preserve_times=0)
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 155, in copy_tree
+    return list(itertools.chain.from_iterable(map(copy_one, names)))
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 186, in _copy_one
+    yield from copy_tree(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 155, in copy_tree
+    return list(itertools.chain.from_iterable(map(copy_one, names)))
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 186, in _copy_one
+    yield from copy_tree(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 155, in copy_tree
+    return list(itertools.chain.from_iterable(map(copy_one, names)))
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/dir_util.py", line 197, in _copy_one
+    file_util.copy_file(
+  File "/home/successpear/anaconda3/envs/kidney/lib/python3.8/site-packages/setuptools/_distutils/file_util.py", line 104, in copy_file
+    from distutils._modified import newer
+ModuleNotFoundError: No module named 'distutils._modified'
+[2025-06-13 09:57:53,755: INFO: stage_04_model_evaluation: *******************]
+[2025-06-13 09:57:53,755: INFO: stage_04_model_evaluation: >>>>>> stage Evaluation stage started <<<<<<]
+[2025-06-13 09:57:53,758: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2025-06-13 09:57:53,760: INFO: common: yaml file: params.yaml loaded successfully]
+[2025-06-13 09:57:53,760: INFO: common: created directory at: artifacts]
+[2025-06-13 09:58:26,899: INFO: common: json file saved at: scores.json]
+[2025-06-13 09:58:26,900: INFO: common: json file saved at: scores.json]
+[2025-06-13 09:58:26,900: INFO: stage_04_model_evaluation: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
